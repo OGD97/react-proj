@@ -5,6 +5,7 @@ import { images } from '../../constants'
 import FormField from '../../components/FormField'
 import CustomButton from '../../components/CustomButton'
 import { Link, router } from 'expo-router'
+import { createUser } from '../../lib/appwrite'
 
 const SignUp = () => {
 
@@ -17,7 +18,7 @@ const SignUp = () => {
     const [isSubmitting, setIsSubmitting] = useState(false)
 
     const submit = () => {
-
+      createUser(form.username, form.email, form.password);
     }
 
   return (
@@ -34,7 +35,7 @@ const SignUp = () => {
 
             <FormField
             title="Username"
-            value={form.email}
+            value={form.username}
             handleChangeText={(e) => setForm({...form,
             username: e})}
             otherStyles="mt-10"
